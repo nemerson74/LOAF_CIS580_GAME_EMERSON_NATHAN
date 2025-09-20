@@ -19,7 +19,9 @@ namespace FirstGame
         private string text = "Unset";
         private BoundingRectangle bounds = new BoundingRectangle(new Vector2(0, 0), 150, 90);
         private SpriteFont font;
+        private bool wasHover = false;
         #endregion
+
         #region Properties
         /// <summary>
         /// Where is the button?
@@ -60,7 +62,6 @@ namespace FirstGame
         {
             texture = content.Load<Texture2D>("Button");
             font = content.Load<SpriteFont>("hamburger");
-
             bounds.Width = texture.Width * scale;
             bounds.Height = texture.Height * scale;
         }
@@ -73,7 +74,12 @@ namespace FirstGame
         {
             bounds.X = Position.X;
             bounds.Y = Position.Y;
+            wasHover = hover;
             hover = collision;
+            if (!wasHover && hover && FirstGame.LOAF.ButtonHoverSound != null)
+            {
+                FirstGame.LOAF.ButtonHoverSound.Play();
+            }
         }
 
         /// <summary>
@@ -104,6 +110,17 @@ namespace FirstGame
                 Vector2 buttonSize = new Vector2(bounds.Width, bounds.Height);
                 Vector2 textPosition = Position + (buttonSize - textSize) / 2f;
                 spriteBatch.DrawString(font, text, textPosition, Color.Black);
+            }
+        }
+
+        /// <summary>
+        /// Plays the click sound effect.
+        /// </summary>
+        public void PlayClickSound()
+        {
+            if (FirstGame.LOAF.ButtonClickSound != null)
+            {
+                FirstGame.LOAF.ButtonClickSound.Play();
             }
         }
     }

@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace FirstGame
 {
@@ -13,17 +15,31 @@ namespace FirstGame
     {
         private GraphicsDeviceManager _graphics;
 
-        /// <summary>
-        /// Input Manager to pass to the scenes.
-        /// </summary>
-        public InputManager InputManager { get; private set; }
-
         // The scene that is currently active.
         private static Scene s_activeScene;
 
         // The next scene to switch to, if there is one.
         private static Scene s_nextScene;
 
+        /// <summary>
+        /// Input Manager to pass to the scenes.
+        /// </summary>
+        public InputManager InputManager { get; private set; }
+
+        /// <summary>
+        /// Gets the sound effect that is played when a button is hovered over.
+        /// </summary>
+        public static SoundEffect ButtonHoverSound { get; private set; }
+
+        /// <summary>
+        /// Gets the sound effect that plays when a button is clicked.
+        /// </summary>
+        public static SoundEffect ButtonClickSound { get; private set; }
+
+        /// <summary>
+        /// Background music for title screen.
+        /// </summary>
+        public static Song backgroundMusicTitle { get; private set; }
 
         public LOAF()
         {
@@ -46,7 +62,9 @@ namespace FirstGame
 
         protected override void LoadContent()
         {
-            
+            ButtonHoverSound = Content.Load<SoundEffect>("001_Hover_01");
+            ButtonClickSound = Content.Load<SoundEffect>("013_Confirm_03");
+            backgroundMusicTitle = Content.Load<Song>("05 A joyfull get together in the royal chambers");
         }
 
         protected override void Update(GameTime gameTime)

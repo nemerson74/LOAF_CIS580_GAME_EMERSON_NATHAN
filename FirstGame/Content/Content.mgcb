@@ -13,6 +13,24 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin 001_Hover_01.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:001_Hover_01.wav
+
+#begin 013_Confirm_03.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:013_Confirm_03.wav
+
+#begin 05 A joyfull get together in the royal chambers.wav
+/importer:WavImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:05 A joyfull get together in the royal chambers.wav
+
 #begin Button.png
 /importer:TextureImporter
 /processor:TextureProcessor

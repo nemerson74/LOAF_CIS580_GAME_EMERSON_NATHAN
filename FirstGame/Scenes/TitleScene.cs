@@ -4,6 +4,7 @@ using InputExample;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using System;
 
 namespace FirstGame.Scenes;
@@ -24,16 +25,20 @@ public class TitleScene : Scene
     private SpriteFont loadText;
     private SpriteFont creditsText;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="TitleScene"/> class.
+    /// </summary>
+    /// <param name="game">The game instance that this scene is associated with.</param>
     public TitleScene(Game game) : base(game) { }
 
     public override void Initialize()
     {
-
         redWorker = new RedWorker() { Position = new Vector2(33, Game.GraphicsDevice.Viewport.Height / 2 - 15), Direction = Direction.Right };
         startButton = new Button() { Position = new Vector2(Game.GraphicsDevice.Viewport.Width / 2 - 345, Game.GraphicsDevice.Viewport.Height / 2 - 90), Text = "Start" };
         loadButton = new Button() { Position = new Vector2(Game.GraphicsDevice.Viewport.Width / 2 - 245, Game.GraphicsDevice.Viewport.Height / 2 - 90), Text = "Load" };
         creditsButton = new Button() { Position = new Vector2(Game.GraphicsDevice.Viewport.Width / 2 - 145, Game.GraphicsDevice.Viewport.Height / 2 - 90), Text = "Credits" };
-        // LoadContent is called during base.Initialize().
+        MediaPlayer.Play(LOAF.backgroundMusicTitle);
+        MediaPlayer.IsRepeating = true;
         base.Initialize();
     }
 
@@ -53,28 +58,48 @@ public class TitleScene : Scene
 
     public override void Update(GameTime gameTime)
     {
-        var LOAF = Game as LOAF; // cast Game to the specific LOAF class
+        var LOAF = Game as LOAF;
         if (LOAF == null) return;
         redWorker.Update(gameTime);
         cursor = new BoundingPoint(LOAF.InputManager.Position / 2);
         startButton.Update(cursor.CollidesWith(startButton.Bounds));
         loadButton.Update(cursor.CollidesWith(loadButton.Bounds));
         creditsButton.Update(cursor.CollidesWith(creditsButton.Bounds));
+
+        
+        if (LOAF.InputManager.LeftMouseClicked)
+        {
+            if (startButton.Hover)
+            {
+                startButton.PlayClickSound();
+                //LOAF.ChangeScene(new GameScene(LOAF));
+            }
+            if (loadButton.Hover)
+            {
+                loadButton.PlayClickSound();
+                //LOAF.ChangeScene(new LoadScene(LOAF));
+            }
+            if (creditsButton.Hover)
+            {
+                creditsButton.PlayClickSound();
+                LOAF.ChangeScene(new CreditsScene(LOAF));
+            }
+        }
     }
 
     public override void Draw(GameTime gameTime)
     {
-        Game.GraphicsDevice.Clear(new Color(32, 40, 78, 255));
+        Game.GraphicsDevice.Clear(Color.DarkSlateGray);
 
-        // Begin the sprite batch to prepare for rendering.
         _spriteBatch.Begin(transformMatrix: Matrix.CreateScale(2));
+
         redWorker.Draw(gameTime, _spriteBatch);
         startButton.Draw(_spriteBatch);
         loadButton.Draw(_spriteBatch);
         creditsButton.Draw(_spriteBatch);
         _spriteBatch.DrawString(friedolin, "Life of a Foreman", new Vector2(70, 80), Color.Goldenrod);
         _spriteBatch.DrawString(exitText, "Press ESC to Exit", new Vector2(20, 20), Color.Beige);
+
         _spriteBatch.End();
     }
 }
-
