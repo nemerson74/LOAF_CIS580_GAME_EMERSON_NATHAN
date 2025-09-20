@@ -18,6 +18,7 @@ namespace FirstGame
         private bool hover;
         private string text = "Unset";
         private BoundingRectangle bounds = new BoundingRectangle(new Vector2(0, 0), 150, 90);
+        private SpriteFont font;
         #endregion
         #region Properties
         /// <summary>
@@ -58,6 +59,7 @@ namespace FirstGame
         public void LoadContent(ContentManager content)
         {
             texture = content.Load<Texture2D>("Button");
+            font = content.Load<SpriteFont>("hamburger");
 
             bounds.Width = texture.Width * scale;
             bounds.Height = texture.Height * scale;
@@ -94,6 +96,14 @@ namespace FirstGame
             else
             {
                 spriteBatch.Draw(texture, Position, null, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0);
+            }
+            //draw text
+            if (font != null && !string.IsNullOrEmpty(text))
+            {
+                Vector2 textSize = font.MeasureString(text);
+                Vector2 buttonSize = new Vector2(bounds.Width, bounds.Height);
+                Vector2 textPosition = Position + (buttonSize - textSize) / 2f;
+                spriteBatch.DrawString(font, text, textPosition, Color.Black);
             }
         }
     }
