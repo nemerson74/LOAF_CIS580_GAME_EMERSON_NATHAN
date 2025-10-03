@@ -21,9 +21,6 @@ public class TitleScene : Scene
 
     private SpriteFont friedolin;
     private SpriteFont exitText;
-    private SpriteFont startText;
-    private SpriteFont loadText;
-    private SpriteFont creditsText;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TitleScene"/> class.
@@ -72,7 +69,7 @@ public class TitleScene : Scene
             if (startButton.Hover)
             {
                 startButton.PlayClickSound();
-                //LOAF.ChangeScene(new GameScene(LOAF));
+                LOAF.ChangeScene(new MinigameSelectorScene(LOAF));
             }
             if (loadButton.Hover)
             {
