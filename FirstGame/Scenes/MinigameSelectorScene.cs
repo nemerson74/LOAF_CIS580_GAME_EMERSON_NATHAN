@@ -14,6 +14,7 @@ public class MinigameSelectorScene : Scene
     private SpriteBatch _spriteBatch;
     private Button carpentryButton;
     private Button masonryButton;
+    private BoundingPoint cursor;
     public MinigameSelectorScene(Game game) : base(game) { }
 
     public override void Initialize()
@@ -26,6 +27,8 @@ public class MinigameSelectorScene : Scene
     public override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(Game.GraphicsDevice);
+        carpentryButton.LoadContent(Content);
+        masonryButton.LoadContent(Content);
     }
 
     public override void Update(GameTime gameTime)
@@ -34,19 +37,39 @@ public class MinigameSelectorScene : Scene
         if (loaf == null) return;
         var input = loaf.InputManager;
 
+        cursor = new BoundingPoint(input.Position / 2);
+        carpentryButton.Update(cursor.CollidesWith(carpentryButton.Bounds));
+        masonryButton.Update(cursor.CollidesWith(masonryButton.Bounds));
+
         // Right click to return
         if (input.PreviousRightMouseState == ButtonState.Released && input.CurrentRightMouseState == ButtonState.Pressed)
         {
             LOAF.ChangeScene(new TitleScene(loaf));
             return;
         }
+
+        // Left click to select
+        if (input.LeftMouseClicked)
+        {
+            if (carpentryButton.Hover)
+            {
+                carpentryButton.PlayClickSound();
+                LOAF.ChangeScene(new CarpentryScene(loaf));
+            }
+            if (masonryButton.Hover)
+            {
+                masonryButton.PlayClickSound();
+                //LOAF.ChangeScene(new LoadScene(LOAF));
+            }
+        }
     }
 
     public override void Draw(GameTime gameTime)
     {
-        Game.GraphicsDevice.Clear(Color.Black);
+        Game.GraphicsDevice.Clear(Color.DarkSlateGray);
         _spriteBatch.Begin(transformMatrix: Matrix.CreateScale(2));
-
+        carpentryButton.Draw(_spriteBatch);
+        masonryButton.Draw(_spriteBatch);
         SpriteFont font = Content.Load<SpriteFont>("hamburger");
         float fontScale = 0.75f;
 

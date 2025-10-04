@@ -44,9 +44,6 @@ public class TitleScene : Scene
         _spriteBatch = new SpriteBatch(Game.GraphicsDevice);
         friedolin = Content.Load<SpriteFont>("friedolin");
         exitText = Content.Load<SpriteFont>("hamburger");
-        startText = Content.Load<SpriteFont>("hamburger");
-        loadText = Content.Load<SpriteFont>("hamburger");
-        creditsText = Content.Load<SpriteFont>("hamburger");
         redWorker.LoadContent(Content);
         startButton.LoadContent(Content);
         loadButton.LoadContent(Content);

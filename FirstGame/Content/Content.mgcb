@@ -57,6 +57,18 @@
 /processorParam:TextureFormat=Compressed
 /build:hamburger.spritefont
 
+#begin hammer.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:hammer.png
+
 #begin MiniWorldSprites/MiniWorldSprites/Characters/Workers/RedWorker/FarmerRed.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -68,4 +80,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:MiniWorldSprites/MiniWorldSprites/Characters/Workers/RedWorker/FarmerRed.png
+
+#begin wood.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:wood.png
 
