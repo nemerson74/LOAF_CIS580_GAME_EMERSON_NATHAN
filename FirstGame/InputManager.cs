@@ -30,6 +30,18 @@ namespace InputExample
         public Vector2 Position { get; private set; }
 
         /// <summary>
+        /// Detects if the right mouse button was clicked this frame
+        /// </summary>
+        public bool RightMouseClicked
+        {
+            get
+            {
+                return previousMouseState.RightButton == ButtonState.Released &&
+                       currentMouseState.RightButton == ButtonState.Pressed;
+            }
+        }
+
+        /// <summary>
         /// Detects if the left mouse button was clicked
         /// </summary>
         public bool LeftMouseClicked
@@ -65,6 +77,16 @@ namespace InputExample
         /// Gets the state of the right mouse button during the previous update.
         /// </summary>
         public ButtonState PreviousRightMouseState => previousMouseState.RightButton;
+
+        /// <summary>
+        /// Returns true while the left mouse button is held down.
+        /// </summary>
+        public bool LeftMouseDown => currentMouseState.LeftButton == ButtonState.Pressed;
+
+        /// <summary>
+        /// Returns true while the right mouse button is held down.
+        /// </summary>
+        public bool RightMouseDown => currentMouseState.RightButton == ButtonState.Pressed;
 
         public void Update(GameTime gameTime)
         {

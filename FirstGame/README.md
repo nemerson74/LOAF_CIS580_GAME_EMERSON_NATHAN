@@ -26,3 +26,9 @@ Credit is optional, but much appreciated.
 * Music:
 "A joyfull get together in the royal chambers" by Boris Sandor
 Used with permission. Available at https://boris-sandor.itch.io/
+
+* Assets by Nathan Emerson for use in this project:
+Button.png
+hammer.png
+wood.png
+nail.png
