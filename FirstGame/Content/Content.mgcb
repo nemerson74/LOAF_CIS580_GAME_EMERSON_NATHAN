@@ -31,6 +31,18 @@
 /processorParam:Quality=Best
 /build:05 A joyfull get together in the royal chambers.wav
 
+#begin 35_Miss_Evade_02.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:35_Miss_Evade_02.wav
+
+#begin 39_Block_03.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:39_Block_03.wav
+
 #begin Button.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -42,6 +54,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Button.png
+
+#begin fireballnormalgabe.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:fireballnormalgabe.png
+
+#begin fireballred.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:fireballred.png
 
 #begin friedolin.spritefont
 /importer:FontDescriptionImporter

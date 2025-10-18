@@ -32,6 +32,15 @@ namespace FirstGame.Collisions
         public float Bottom => Y + Height;
 
         /// <summary>
+        /// Gets or sets the position (X,Y) as a Vector2.
+        /// </summary>
+        public Vector2 Position
+        {
+            get => new Vector2(X, Y);
+            set { X = value.X; Y = value.Y; }
+        }
+
+        /// <summary>
         /// Builds a new bounding rectangle from x, y, width and height
         /// </summary>
         /// <param name="x">The x coordinates of the rectangle</param>
@@ -58,6 +67,42 @@ namespace FirstGame.Collisions
             Y = position.Y;
             Width = width;
             Height = height;
+        }
+
+        /// <summary>
+        /// Move the rectangle to the given position.
+        /// </summary>
+        public void MoveTo(Vector2 position)
+        {
+            X = position.X;
+            Y = position.Y;
+        }
+
+        /// <summary>
+        /// Move the rectangle to the given coordinates.
+        /// </summary>
+        public void MoveTo(float x, float y)
+        {
+            X = x;
+            Y = y;
+        }
+
+        /// <summary>
+        /// Move the rectangle by delta.
+        /// </summary>
+        public void Translate(Vector2 delta)
+        {
+            X += delta.X;
+            Y += delta.Y;
+        }
+
+        /// <summary>
+        /// Move the rectangle by dx, dy.
+        /// </summary>
+        public void Translate(float dx, float dy)
+        {
+            X += dx;
+            Y += dy;
         }
 
         /// <summary>
